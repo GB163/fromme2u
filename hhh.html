@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Box</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 15%;
+            border-radius: 15%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .question {
+            font-size: 15%;
+            margin-bottom: 15%;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        button {
+            margin-top: 15%;
+            padding: 8px 15px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p class="question">Which is the capital of France?</p>
+        <div class="options">
+            <label><input type="radio" name="answer" value="London"> London</label>
+            <label><input type="radio" name="answer" value="Paris"> Paris</label>
+            <label><input type="radio" name="answer" value="Berlin"> Berlin</label>
+            <label><input type="radio" name="answer" value="Rome"> Rome</label>
+        </div>
+        <button onclick="checkAnswer()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const selectedOption = document.querySelector('input[name="answer"]:checked');
+            const result = document.getElementById("result");
+
+            if (selectedOption) {
+                if (selectedOption.value === "Paris") {
+                    result.textContent = "✅ Correct!";
+                    result.style.color = "green";
+                } else {
+                    result.textContent = "❌ Incorrect! Try again.";
+                    result.style.color = "red";
+                }
+            } else {
+                result.textContent = "⚠️ Please select an answer.";
+                result.style.color = "orange";
+            }
+        }
+    </script>
+
+</body>
+</html>
