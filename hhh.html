@@ -8,7 +8,6 @@
     <!-- Elegant Ghibli-esque Font -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
-
     <style>
         body, html {
             margin: 0;
@@ -54,6 +53,18 @@
             box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7);
         }
 
+        .message {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
         @keyframes glow {
             0% { box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4); }
             50% { box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.6); }
@@ -89,8 +100,10 @@
     <img src="castleinthesky.jpg" class="background" id="bgImage">
 
     <div class="button-container">
-        <button class="text-overlay" onclick="changeImage()">It's us.</button>
+        <button class="text-overlay" id="mainButton" onclick="changeImage()">It's us.</button>
     </div>
+
+    <div class="message" id="message">Yours truly, Gaurav</div>
 
     <script>    
         const images = [
@@ -105,12 +118,29 @@
         let index = 0;
 
         function changeImage() {
-            index = (index + 1) % images.length;
-            document.getElementById('bgImage').style.opacity = 0;
+            if (index < images.length - 1) {
+                index++;
+                document.getElementById('bgImage').style.opacity = 0;
+                setTimeout(() => {
+                    document.getElementById('bgImage').src = images[index];
+                    document.getElementById('bgImage').style.opacity = 1;
+                    
+                    if (index === images.length - 1) {
+                        document.getElementById('mainButton').textContent = "I accept";
+                        document.getElementById('mainButton').onclick = showFinalImage;
+                        setTimeout(() => {
+                            document.getElementById('message').style.opacity = 1;
+                        }, 1000);
+                    }
+                }, 500);
+            }
+        }
+
+        function showFinalImage() {
             setTimeout(() => {
-                document.getElementById('bgImage').src = images[index];
-                document.getElementById('bgImage').style.opacity = 1;
-            }, 500);
+                document.getElementById('bgImage').src = "rts.png";
+                document.getElementById('mainButton').style.display = 'none';
+            }, 3000);
         }
 
         function createSakura() {
@@ -124,5 +154,6 @@
 
         setInterval(createSakura, 500);
     </script>
+
 </body>
 </html>
