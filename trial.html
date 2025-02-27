@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthdayyy!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background: url(bgm1.jpg);
+      background-repeat: no-repeat;
+      background-size: auto;
+      color: #ffebcc;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    h1, h2 {
+      margin: 20px 0;
+      text-shadow: #702cd0 2px 2px;
+    } 
+
+    p {
+      font-size: 18px;
+      margin: 20px 0;
+    }
+
+    .heart-button {
+      background: url('gatito.png') no-repeat center;
+      background-size: contain;
+      width: 80px;
+      height: 80px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .heart-button:hover {
+      transform: scale(1.2);
+    }
+
+    #message-container, #sakura-message {
+      font-size: 18px;
+      color: #ffebcc;
+      margin-top: 30px;
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .sakura {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: url('sakura.png') no-repeat center;
+      background-size: contain;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      cursor: pointer;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 24px; }
+      h2 { font-size: 18px; }
+      p { font-size: 14px; }
+      .heart-button { width: 60px; height: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <audio src="blue.mp3" autoplay loop></audio>
+  <h1>Happy Birthday Baeb!</h1>
+  <h2>Only for your eyes</h2>
+  <h2>Tap the CAR</h2>
+  <button class="heart-button" id="heart-btn"></button>
+  <p id="message-container"></p>
+  <p id="sakura-message"></p>
+
+  <script>
+    const heartBtn = document.getElementById('heart-btn');
+    const messageContainer = document.getElementById('message-container');
+    const sakuraMessage = document.getElementById('sakura-message');
+    const messages = [
+      "You are the most pog person I know! :3",
+      "I wonder how u got interested in me",
+      "I really wanna know how",
+      "To be absolutely real wit u",
+      "I fell for u the day u intro'd Ruth to me",
+      "Your kindness has totally healed me (pls never stop healing me)",
+      "Ofc the feeling should be mutual, and I promise to make u feel that way",
+      "Also I can't believe us meeting was a TOOOOTAL COINCIDENCE",
+      "Thanxx to the stars for making me accept the world-join request",
+      "Btw pls let me hav Ruth for 1 day (plssssssssssssss😺)",
+      "I'm ready to be your discord date (*kitten)",
+      "Happy Birthday, HUNNNNNN! Here's to forever 👉👈💖",
+      "You've unlocked all the birthday wishes!",
+      "[The constellations have sponsored you 20 Quintillion aura.]",
+      "There are many easter eggs in this page, try to find them BABEZZZZZ",
+      "I love you so much, (づ￣ ³￣)づ"
+    ];
+    
+    let messageIndex = 0;
+    heartBtn.addEventListener('click', () => {
+      if (messageIndex < messages.length) {
+        messageContainer.style.display = 'block';
+        messageContainer.textContent = messages[messageIndex];
+        messageIndex++;
+      } else {
+        heartBtn.style.backgroundImage = "url('ummm.png')";
+        heartBtn.style.width = "120px";
+        heartBtn.style.height = "120px";
+        messageContainer.textContent = "Aaaaaand 1 more thing......";
+        setTimeout(() => {
+          window.location.href = "redirect.html";
+        }, 3000);
+      }
+    });
+
+    function createSakura() {
+      const sakura = document.createElement('div');
+      sakura.classList.add('sakura');
+      sakura.style.left = Math.random() * 100 + 'vw';
+      sakura.style.animationDuration = Math.random() * 3 + 3 + 's';
+
+      // Add an event listener for clicks on sakura petals
+      sakura.addEventListener('click', () => {
+        const hiddenMessages = [
+          "This petal carries a secret... 💌",
+          "A sakura whispering... I love you.",
+          "Ruth approves of our love! 😺",
+          "Did you know? This petal is magic!",
+          "You found a hidden wish! ⭐",
+          "Baeee, you're gorgeous! 💖",
+          "This petal just blessed us! ✨",
+          "A sakura petal lands on your hand... fate?",
+          "Do you believe in destiny? 🌸",
+          "One more petal, one more memory."
+        ];
+        const randomMessage = hiddenMessages[Math.floor(Math.random() * hiddenMessages.length)];
+        sakuraMessage.style.display = 'block';
+        sakuraMessage.textContent = randomMessage;
+
+        sakura.remove();
+      });
+
+      document.body.appendChild(sakura);
+      setTimeout(() => sakura.remove(), 5000);
+    }
+
+    setInterval(createSakura, 500);
+  </script>
+</body>
+</html>

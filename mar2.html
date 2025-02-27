@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday MJ!</title>
+  <title>Happy Birthdayyy!</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     body {
@@ -92,7 +92,7 @@
 </head>
 <body>
   <audio src="blue.mp3" autoplay loop></audio>
-  <h1>Happy Birthday MJ!</h1>
+  <h1>Happy Birthday Baeb!</h1>
   <h2>Only for your eyes</h2>
   <h2>Tap the CAR</h2>
   <button class="heart-button" id="heart-btn"></button>
@@ -102,16 +102,19 @@
     const heartBtn = document.getElementById('heart-btn');
     const messageContainer = document.getElementById('message-container');
     const messages = [
-      "You are the most pog person I know! (✿◠‿◠)",
-      "Your love has totally healed me (pls never stop healing me)",
+      "You are the most pog person I know! :3",
+      "Your kindness has totally healed me (pls never stop healing me)",
       "& ofc the feeling should be mutual, and I promise to make u feel that way too",
       "Also I can't believe us meeting was a TOOOOTAL COINCIDENCE",
+      "Thanxx to our mutual Amirithesh",
       "Btw pls let me hav Ruth for 1 day (plssssssssssssss😺)",
-      "Im ready to be your discord date (kitten😌) everyday",
+      "Im ready to be your discord date (kitten;)",
       "Happy Birthday, HUNNNNNN! Here's to forever 👉👈💖",
-      "You've unlocked all the birthday wishes!",
+      "I GOTTA agree with you, our movie dates will be forever ",
       "There are many easter eggs in this page, try to find them BABEZZZZZ",
-      "I love you so much, MJ! (づ￣ ³￣)づ",
+      "I love you so much, (づ￣ ³￣)づ",
+      "I would literally die if we don't end up marrying",
+      "Also...",
       "[The constellations have sponsored you +20 Quintillion aura.]"
     ];
     
@@ -122,6 +125,10 @@
         messageContainer.textContent = messages[messageIndex];
         messageIndex++;
       } else {
+        // Change the button image to final.png
+        heartBtn.style.backgroundImage = "url('ummm.png')";
+        heartBtn.style.width = "120px";
+        heartBtn.style.height = "120px";
         messageContainer.textContent = "Aaaaaand 1 more thing......";
         setTimeout(() => {
           window.location.href = "redirect.html";
@@ -141,4 +148,4 @@
     setInterval(createSakura, 500);
   </script>
 </body>
-</html>
+</html>  
