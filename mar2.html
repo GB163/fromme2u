@@ -45,7 +45,7 @@
       transform: scale(1.2);
     }
 
-    #message-container {
+    #message-container, #sakura-message {
       font-size: 18px;
       color: #ffebcc;
       margin-top: 30px;
@@ -66,6 +66,7 @@
       background-size: contain;
       opacity: 0.8;
       animation: fall linear infinite;
+      cursor: pointer;
     }
 
     @keyframes fall {
@@ -85,9 +86,6 @@
       p { font-size: 14px; }
       .heart-button { width: 60px; height: 60px; }
     }
-    img {
-      width: 8%;
-    }
   </style>
 </head>
 <body>
@@ -97,25 +95,31 @@
   <h2>Tap the CAR</h2>
   <button class="heart-button" id="heart-btn"></button>
   <p id="message-container"></p>
+  <p id="sakura-message"></p>
 
   <script>
     const heartBtn = document.getElementById('heart-btn');
     const messageContainer = document.getElementById('message-container');
+    const sakuraMessage = document.getElementById('sakura-message');
     const messages = [
       "You are the most pog person I know! :3",
+      "I wonder how u got interested in me",
+      "I really wanna know how",
+      "To be absolutely real wit u",
+      "I fell for u the day u said the nicest thing ever to me",
+      "(Peg me)",
       "Your kindness has totally healed me (pls never stop healing me)",
-      "& ofc the feeling should be mutual, and I promise to make u feel that way too",
+      "Ofc the feeling should be mutual, and I promise to make u feel that way",
       "Also I can't believe us meeting was a TOOOOTAL COINCIDENCE",
-      "Thanxx to our mutual Amirithesh",
+      "Thanxx to the braincell who compelled me to accept the world join request",
       "Btw pls let me hav Ruth for 1 day (plssssssssssssss😺)",
-      "Im ready to be your discord date (kitten;)",
-      "Happy Birthday, HUNNNNNN! Here's to forever 👉👈💖",
-      "I GOTTA agree with you, our movie dates will be forever ",
-      "There are many easter eggs in this page, try to find them BABEZZZZZ",
+      "I'm ready to be your discord date (*kitten)",
+      "Happy Birthday, HUNN! Here's to forever 👉👈💖",
+      "I swear I won't fall asleep next time we watch Dune together",
+      "or any other movie really",
+      "There are many easter eggs in this page, try n find them bae",
       "I love you so much, (づ￣ ³￣)づ",
-      "I would literally die if we don't end up marrying",
-      "Also...",
-      "[The constellations have sponsored you +20 Quintillion aura.]"
+      "[The constellations have sponsored you 20 Quintillion aura.]",
     ];
     
     let messageIndex = 0;
@@ -125,7 +129,6 @@
         messageContainer.textContent = messages[messageIndex];
         messageIndex++;
       } else {
-        // Change the button image to final.png
         heartBtn.style.backgroundImage = "url('ummm.png')";
         heartBtn.style.width = "120px";
         heartBtn.style.height = "120px";
@@ -139,13 +142,35 @@
     function createSakura() {
       const sakura = document.createElement('div');
       sakura.classList.add('sakura');
-      document.body.appendChild(sakura);
       sakura.style.left = Math.random() * 100 + 'vw';
       sakura.style.animationDuration = Math.random() * 3 + 3 + 's';
+
+      // Add an event listener for clicks on sakura petals
+      sakura.addEventListener('click', () => {
+        const hiddenMessages = [
+          "This petal carries a secret... 💌",
+          "A sakura whispering... I love you.",
+          "Ruth approves of our love! 😺",
+          "Did you know? This petal is magic!",
+          "You found a hidden wish! ⭐",
+          "Baeee, you're gorgeous! 💖",
+          "This petal just blessed us! ✨",
+          "A sakura petal lands on your hand... fate?",
+          "Do you believe in destiny? 🌸",
+          "One more petal, one more memory."
+        ];
+        const randomMessage = hiddenMessages[Math.floor(Math.random() * hiddenMessages.length)];
+        sakuraMessage.style.display = 'block';
+        sakuraMessage.textContent = randomMessage;
+
+        sakura.remove();
+      });
+
+      document.body.appendChild(sakura);
       setTimeout(() => sakura.remove(), 5000);
     }
 
     setInterval(createSakura, 500);
   </script>
 </body>
-</html>  
+</html>
