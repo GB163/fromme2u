@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Us Someday</title>
     
-    <!-- Allura Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+    <!-- Elegant Ghibli-esque Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
     <style>
         body, html {
@@ -36,40 +36,61 @@
         }
 
         .text-overlay {
-            font-family: 'Allura', cursive;
+            font-family: 'Dancing Script', cursive;
             font-size: 3.5rem;
-            color: #fff;
+            color: #e4ac5d;
             border: 2px solid white;
-            padding: 15px 50px;
+            padding: 10px 40px;
             border-radius: 50px;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease-in-out;
-            text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.8);
+            background: transparent;
+            transition: all 0.3s ease-in-out;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
         }
 
         .text-overlay:hover {
-            transform: scale(1.15);
-            box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7);
         }
 
         .message {
             position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: rgb(227, 98, 98);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .continue-button {
+            position: absolute;
             bottom: 10%;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'Allura', cursive;
-            font-size: 2rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: rgb(0, 0, 0);
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: none;
+            transition: 0.3s ease-in-out;
+        }
+
+        .continue-button:hover {
+            background: white;
+            color: black;
         }
 
         .sakura {
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             background: url('primo.png') no-repeat center;
             background-size: contain;
             opacity: 0.8;
@@ -89,6 +110,7 @@
     </style>
 </head>
 <body>
+
     <audio src="rts.mp3" autoplay loop></audio>
 
     <img src="castleinthesky.jpg" class="background" id="bgImage">
@@ -98,6 +120,7 @@
     </div>
 
     <div class="message" id="message">Yours truly, Gaurav</div>
+    <button class="continue-button" id="continueButton" onclick="redirectToNext()">Gift box 2</button>
 
     <script>    
         const images = [
@@ -124,17 +147,22 @@
                         document.getElementById('mainButton').onclick = showFinalImage;
                         setTimeout(() => {
                             document.getElementById('message').style.opacity = 1;
-                        }, 1500);
+                            document.getElementById('continueButton').style.display = "block"; 
+                        }, 1000);
                     }
-                }, 600);
+                }, 500);
             }
         }
 
         function showFinalImage() {
             setTimeout(() => {
-                document.getElementById('bgImage').src = "rts.png";
+                document.getElementById('bgImage').src = "kith.gif";
                 document.getElementById('mainButton').style.display = 'none';
             }, 1000);
+        }
+
+        function redirectToNext() {
+            window.location.href = "gift2.html"; 
         }
 
         function createSakura() {
@@ -142,11 +170,12 @@
             sakura.classList.add('sakura');
             document.body.appendChild(sakura);
             sakura.style.left = Math.random() * 100 + 'vw';
-            sakura.style.animationDuration = Math.random() * 4 + 4 + 's';
-            setTimeout(() => sakura.remove(), 6000);
+            sakura.style.animationDuration = Math.random() * 3 + 3 + 's';
+            setTimeout(() => sakura.remove(), 5000);
         }
 
-        setInterval(createSakura, 400);
+        setInterval(createSakura, 500);
     </script>
+
 </body>
 </html>
