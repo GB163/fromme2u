@@ -24,7 +24,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 0.2s ease-in-out;
         }
 
         .button-container {
@@ -134,31 +134,42 @@
 
         let index = 0;
 
+        // Preload images to prevent delay
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+
         function changeImage() {
             if (index < images.length - 1) {
                 index++;
-                document.getElementById('bgImage').style.opacity = 0;
+                const bgImage = document.getElementById('bgImage');
+
+                bgImage.style.opacity = 0.2;
                 setTimeout(() => {
-                    document.getElementById('bgImage').src = images[index];
-                    document.getElementById('bgImage').style.opacity = 1;
+                    bgImage.src = images[index];
+                    bgImage.style.opacity = 1;
                     
                     if (index === images.length - 1) {
                         document.getElementById('mainButton').textContent = "I accept";
                         document.getElementById('mainButton').onclick = showFinalImage;
-                        setTimeout(() => {
-                            document.getElementById('message').style.opacity = 1;
-                            document.getElementById('continueButton').style.display = "block"; 
-                        }, 1000);
                     }
-                }, 500);
+                }, 200);
             }
         }
 
         function showFinalImage() {
+            document.getElementById('bgImage').src = "kith.gif";
+            document.getElementById('mainButton').style.display = 'none';
+            
             setTimeout(() => {
-                document.getElementById('bgImage').src = "kith.gif";
-                document.getElementById('mainButton').style.display = 'none';
-            }, 1000);
+                document.getElementById('message').style.opacity = 1;
+            }, 500);
+
+            // Show "Gift box 2" button after 5 seconds
+            setTimeout(() => {
+                document.getElementById('continueButton').style.display = "block"; 
+            }, 5000);
         }
 
         function redirectToNext() {
