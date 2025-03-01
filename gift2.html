@@ -6,15 +6,31 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Short+Stack&family=Homemade+Apple&display=swap">
   <link rel="stylesheet" href="./style.css">
   <style>
+    /* Fix shrinking issue */
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Prevents scrolling */
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       background-image: url(bg.jpeg);
+      max-width: 100vw; /* Prevents page from expanding */
+      position: relative;
+    }
+
+    .paper {
+      position: absolute;
+      cursor: grab;
     }
   </style>
 </head>
 <body>
 
   <!-- Fix autoplay on mobile -->
-  <audio id="bgMusic" src="blue.mp3" loop autoplay></audio>
+  <audio id="bgMusic" src="blue.mp3" loop></audio>
 
   <div class="paper image">
     <img src="images/hbd.gif">
@@ -53,14 +69,15 @@
   </div>
 
   <script>
+    // Enable autoplay on user interaction
     document.addEventListener("click", function () {
       let bgMusic = document.getElementById("bgMusic");
       if (bgMusic.paused) {
         bgMusic.play().catch(error => console.log("Audio play failed:", error));
       }
-    }, { once: true }); // Ensures it only triggers once
+    }, { once: true });
 
-    // Enable dragging on mobile (touch) and desktop (mouse)
+    // Enable dragging with screen boundaries
     const papers = document.querySelectorAll(".paper");
 
     papers.forEach(paper => {
@@ -69,6 +86,7 @@
 
       function startDrag(e) {
         e.preventDefault();
+        
         let startX = e.clientX || e.touches[0].clientX;
         let startY = e.clientY || e.touches[0].clientY;
         let initialX = paper.offsetLeft;
@@ -77,8 +95,15 @@
         function moveDrag(e) {
           let x = e.clientX || e.touches[0].clientX;
           let y = e.clientY || e.touches[0].clientY;
-          paper.style.left = initialX + (x - startX) + "px";
-          paper.style.top = initialY + (y - startY) + "px";
+
+          // Restrict movement within the screen width
+          let maxX = window.innerWidth - paper.clientWidth;
+          let maxY = window.innerHeight - paper.clientHeight;
+          let newX = Math.max(0, Math.min(initialX + (x - startX), maxX));
+          let newY = Math.max(0, Math.min(initialY + (y - startY), maxY));
+
+          paper.style.left = newX + "px";
+          paper.style.top = newY + "px";
         }
 
         function stopDrag() {
