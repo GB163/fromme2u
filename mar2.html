@@ -90,7 +90,7 @@
 </head>
 <body>
   <audio src="blue.mp3" autoplay loop></audio>
-  <h1>Happy Birthday Baeb!</h1>
+  <h1>Happy Birthday MJ!</h1>
   <h2>Only for your eyes</h2>
   <h2>Tap the CAR</h2>
   <button class="heart-button" id="heart-btn"></button>
@@ -102,24 +102,30 @@
     const messageContainer = document.getElementById('message-container');
     const sakuraMessage = document.getElementById('sakura-message');
     const messages = [
+      "Heyyy babeszzz, Hope you're doing well!",
+      "Lemme tell u something",
       "You are the most pog person I know! :3",
       "I wonder how u got interested in me",
       "I really wanna know how",
-      "To be absolutely real wit u",
+      "To be absolutely real wit u..",
       "I fell for u the day u said the nicest thing ever to me",
-      "(Peg me)",
-      "Your kindness has totally healed me (pls never stop healing me)",
-      "Ofc the feeling should be mutual, and I promise to make u feel that way",
+      "U really pulled my heartstrings that day",
+      "Just b sure to pe.. I mean, HUG me as hard as u can",
+      "(and peg me even harder)",
       "Also I can't believe us meeting was a TOOOOTAL COINCIDENCE",
-      "Thanxx to the braincell who compelled me to accept the world join request",
-      "Btw pls let me hav Ruth for 1 day (plssssssssssssss😺)",
+      "Imagine if I wasnt in that coop world",
+      "Also huge shoutout to the braincell who made me accept the world join request",
       "I'm ready to be your discord date (*kitten)",
-      "Happy Birthday, HUNN! Here's to forever 👉👈💖",
-      "I swear I won't fall asleep next time we watch Dune together",
+      "Nd ISTG I won't fall asleep next time we watch Dune together",
       "or any other movie really",
-      "There are many easter eggs in this page, try n find them bae",
+      "It's all an adventure, that comes with a breathtaking view",
+      "Walking a tightrope with you",
       "I love you so much, (づ￣ ³￣)づ",
-      "[The constellations have sponsored you 20 Quintillion aura.]",
+      "Tho I can only support u mentally (for now) *wink* *wink*, I am ready to go all out wit it",
+      "Feel TOTALLY free to hit me up anytime, I'll be there for u",
+      "Happy Birthday, HUNN! Here's to forever 👉👈💖",
+      "Btw pls let me hav Ruth for 1 day (plsssssssss😺)",
+      "[The constellations have sponsored you 20 quintillion aura.]",
     ];
     
     let messageIndex = 0;
@@ -140,24 +146,26 @@
     });
 
     function createSakura() {
-      const sakura = document.createElement('div');
-      sakura.classList.add('sakura');
-      sakura.style.left = Math.random() * 100 + 'vw';
-      sakura.style.animationDuration = Math.random() * 3 + 3 + 's';
+            const sakura = document.createElement('div');
+            sakura.classList.add('sakura');
+            sakura.style.left = Math.random() * 100 + 'vw';
+            sakura.style.animationDuration = Math.random() * 6 + 6 + 's'; // Slowed down animation
+            document.body.appendChild(sakura);
+            setTimeout(() => sakura.remove(), 12000);
 
       // Add an event listener for clicks on sakura petals
       sakura.addEventListener('click', () => {
         const hiddenMessages = [
-          "This petal carries a secret... 💌",
-          "A sakura whispering... I love you.",
+          "Mualani and Xilonen within 20 pulls guaranteed!!!",
+          "A sakura conveying... Ilysm!",
           "Ruth approves of our love! 😺",
-          "Did you know? This petal is magic!",
-          "You found a hidden wish! ⭐",
+          "Muku approves of our love! 🐶",
+          "Claim this Welkin pass (and show it to your husband)",
           "Baeee, you're gorgeous! 💖",
-          "This petal just blessed us! ✨",
+          "I follow u to the great unknown",
           "A sakura petal lands on your hand... fate?",
-          "Do you believe in destiny? 🌸",
-          "One more petal, one more memory."
+          "5 cm per second",
+          "I love you more than I love Genshin Impact, there I said it",
         ];
         const randomMessage = hiddenMessages[Math.floor(Math.random() * hiddenMessages.length)];
         sakuraMessage.style.display = 'block';
@@ -170,7 +178,7 @@
       setTimeout(() => sakura.remove(), 5000);
     }
 
-    setInterval(createSakura, 500);
+    setInterval(createSakura, 1000);
   </script>
 </body>
 </html>
