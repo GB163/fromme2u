@@ -53,10 +53,12 @@
   </div>
 
   <script>
-    // Enable autoplay when user interacts with the page
     document.addEventListener("click", function () {
-      document.getElementById("bgMusic").play();
-    });
+      let bgMusic = document.getElementById("bgMusic");
+      if (bgMusic.paused) {
+        bgMusic.play().catch(error => console.log("Audio play failed:", error));
+      }
+    }, { once: true }); // Ensures it only triggers once
 
     // Enable dragging on mobile (touch) and desktop (mouse)
     const papers = document.querySelectorAll(".paper");
