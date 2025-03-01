@@ -47,13 +47,13 @@
 <body>
     <audio src="lant.mp3" autoplay></audio>
 
-    <h1 class="mb-4">Wanna see something really nice?</h1>
+    <h1 class="mb-4">Sooo.. this is a lil somethn from me</h1>
     <div class="mb-3">
         <label class="form-check-label d-block">
-            <input type="radio" name="answer" value="yes" class="form-check-input"> Yes
+            <input type="radio" name="answer" value="yes" class="form-check-input"> Gift box 1
         </label>
         <label class="form-check-label d-block">
-            <input type="radio" name="answer" value="no" id="noOption" class="form-check-input"> No
+            <input type="radio" name="answer" value="no" id="noOption" class="form-check-input"> Gift box 2
         </label>
     </div>
     <button class="btn btn-custom" onclick="submitAnswer()">Submit</button>
@@ -67,11 +67,12 @@
             
             if (selectedOption) {
                 if (selectedOption.value === "yes") {
-                    alert("Yay! ❤️");
+                    alert("OwO huggies?");
+                    window.location.href = "mar2.html"; 
                 } else {
-                    alert("REALLY?? I'll make u see it anyway hmph!!");
+                    alert("UwU kith me hunnney");
+                    window.location.href = "gift2.html"; 
                 }
-                window.location.href = "mar2.html"; 
             } else {
                 alert("YES OR NO MLs!");
             }
