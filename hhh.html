@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Us Someday</title>
     
-    <!-- Elegant Ghibli-esque Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <!-- Retro Pixel Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <style>
         body, html {
@@ -17,6 +17,7 @@
             overflow: hidden;
             position: relative;
             background: black;
+            font-family: 'Press Start 2P', cursive;
         }
 
         .background {
@@ -36,21 +37,22 @@
         }
 
         .text-overlay {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            color: #e4ac5d;
-            border: 2px solid white;
-            padding: 10px 40px;
-            border-radius: 50px;
+            font-size: 16px;
+            color: white;
+            background: black;
+            border: 3px solid white;
+            padding: 15px 30px;
             cursor: pointer;
-            background: transparent;
+            text-transform: uppercase;
             transition: all 0.3s ease-in-out;
-            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            display: inline-block;
         }
 
         .text-overlay:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7);
+            background: white;
+            color: black;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
         }
 
         .message {
@@ -58,11 +60,11 @@
             bottom: 20%;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
+            font-size: 14px;
             color: rgb(227, 98, 98);
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            text-align: center;
         }
 
         .continue-button {
@@ -70,14 +72,13 @@
             bottom: 10%;
             left: 50%;
             transform: translateX(-50%);
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: rgb(0, 0, 0);
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            padding: 10px 30px;
-            border-radius: 30px;
+            font-size: 14px;
+            color: white;
+            background: black;
+            border: 3px solid white;
+            padding: 15px 30px;
             cursor: pointer;
+            text-transform: uppercase;
             display: none;
             transition: 0.3s ease-in-out;
         }
